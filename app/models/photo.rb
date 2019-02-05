@@ -5,5 +5,12 @@ class Photo < ApplicationRecord
   has_many :comments
   has_many :spinoffs, foreign_key: "photo_id", class_name: "Photo"
 
+  def owner
+    if self.photo
+      self.photo.user
+    else
+      self.user
+    end
+  end
 
 end

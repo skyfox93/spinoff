@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_30_171607) do
+ActiveRecord::Schema.define(version: 2019_02_04_185636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2019_01_30_171607) do
     t.boolean "accepted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["follower_id", "followee_id"], name: "index_friendships_on_follower_id_and_followee_id", unique: true
   end
 
   create_table "photos", force: :cascade do |t|

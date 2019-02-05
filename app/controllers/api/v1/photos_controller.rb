@@ -16,7 +16,6 @@ class Api::V1::PhotosController < ApplicationController
     @photo.file=params[:file]
 
     if @photo.save
-      byebug
       render json: @photo, status: :created
     else
       render json: @photo.errors, status: :unprocessable_entity
@@ -43,6 +42,8 @@ class Api::V1::PhotosController < ApplicationController
       render json: {error: 'failed to create new photo'}, status: :unprocessable_entity
     end
   end
+
+  
 
 
 

@@ -19,8 +19,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'carrierwave', '~> 1.0'
 gem 'carrierwave-base64', '~> 2.0'
-
-
+gem 'dotenv-rails'
+gem "jwt"
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

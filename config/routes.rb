@@ -10,6 +10,10 @@ Rails.application.routes.draw do
         resources :photos,shallow: true
         get '/requests', to: 'friendships#get_requests'
         patch '/accept', to: 'friendships#accept'
+        get '/following',to: 'users#following'
+        get '/feed',to: 'users#feed'
+        get '/profile_photos',to: 'users#profile_photos'
+
       end
       resources :friendships, only: [:create,:update,:delete]
       resources :comments, only:[:create,:update,:delete]

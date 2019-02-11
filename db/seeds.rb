@@ -15,6 +15,6 @@ ji=User.create(displayname:"ji", password_digest: 'sports', username:'j-ster', b
 
 fred=User.create(displayname:"freddy", password_digest: 'funsports', username:'fredster', bio: 'boring as heck')
 
-Friendship.create(follower: sky, followee: gabby, accepted: true)
-Friendship.create(follower: ji, followee: skylar, accepted: true)
-Friendship.create(follower: fred, followee: skylar, accepted: false)
+Friendship.create(follower: User.first, followee: User.second, accepted: true)
+Friendship.create(follower: User.third, followee: User.first, accepted: true)
+Friendship.create(follower: User.fourth, followee: User.first, accepted: false)

@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+has_secure_password
+mount_base64_uploader :avatar, AvatarUploader
+
   has_many :photos
   has_many :requests_made, foreign_key: "follower_id", class_name: "Friendship"
   has_many :requests_received, foreign_key: "followee_id", class_name: "Friendship"
@@ -67,5 +70,34 @@ class User < ApplicationRecord
       photo.owner==self
     }
   end
+
+  def originals
+    self.photos.select{|photo|!photo.id}
+  end
+
+  def spinoffs_from
+    self.owned_photos.select{|photo|photo.id}
+  end
+
+  def spinoffs_by
+    self.photos.select{|photo|photo.id}
+  end
+
+  def feed
+    self.really_following.collect{|user|
+      user.owned_photos
+    }.flatten.sort{|a,b| b.created_at - a.created_at}
+  end
+
+
+  # def profile_photos
+  #   {
+  #     originals: self.originals.sort{|a,b| b.created_at - a.created_at},
+  #     spinoffs_by: self.spinoffs_by.sort{|a,b| b.created_at - a.created_at},
+  #     spinoffs_from: self.spinoffs_from.sort{|a,b| b.created_at - a.created_at}
+  #   }
+  # end
+
+
 
 end

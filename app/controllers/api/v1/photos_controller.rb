@@ -10,11 +10,12 @@ class Api::V1::PhotosController < ApplicationController
     @photo=Photo.find(params[:id])
     render json: @photo
   end
+
+
   # ? post new puzzle?
   def create
     @photo = Photo.new(photo_params)
-    @photo.file=params[:file]
-
+    @photo.file=params[:file] 
     if @photo.save
       render json: @photo, status: :created
     else
@@ -43,7 +44,7 @@ class Api::V1::PhotosController < ApplicationController
     end
   end
 
-  
+
 
 
 

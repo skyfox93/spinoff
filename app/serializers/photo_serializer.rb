@@ -1,8 +1,14 @@
 class PhotoSerializer < ActiveModel::Serializer
-  attributes :id,:file,:spinoffs
+  attributes :id,:file,:photo_id,:spinoff_count
   #has_many :spinoffs
   has_many :comments
   belongs_to :user
+  belongs_to :owner
+
+  def spinoff_count
+    object.spinoffs.count
+  end
+
 
   def spinoffs
     object.spinoffs.map{|photo|

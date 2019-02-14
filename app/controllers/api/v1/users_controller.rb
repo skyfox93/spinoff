@@ -1,5 +1,6 @@
 class Api::V1::UsersController < ApplicationController
-  skip_before_action :authorized, only: [:create]
+  skip_before_action :authorized
+  #, only: [:create]
   def create
     @user = User.create(user_params)
     if @user.valid?
@@ -36,7 +37,7 @@ class Api::V1::UsersController < ApplicationController
   def profile_photos
     @user=User.find(params[:user_id])
     @photos=@user.owned_photos
-    render :json => @photos
+    render json: {user: @user,photos: @photos}, serializer: ProfileSerializer
   end
 
   def following

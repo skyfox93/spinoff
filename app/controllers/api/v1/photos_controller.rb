@@ -1,5 +1,5 @@
 class Api::V1::PhotosController < ApplicationController
-
+#skip_before_action :authorized
   def index
     @user=User.find(params[:user_id])
     @photos = @user.photos
@@ -15,7 +15,7 @@ class Api::V1::PhotosController < ApplicationController
   # ? post new puzzle?
   def create
     @photo = Photo.new(photo_params)
-    @photo.file=params[:file] 
+    @photo.file=params[:file]
     if @photo.save
       render json: @photo, status: :created
     else

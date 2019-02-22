@@ -1,0 +1,9 @@
+development:
+  cloud_name: skycloud4eva
+  api_key: 262972526265418
+  api_secret: ENV['cloudinary_secret']
+
+production:
+  cloud_name: skycloud4eva
+  api_key: 262972526265418
+  api_secret: ENV['cloudinary_secret']

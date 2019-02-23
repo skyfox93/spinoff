@@ -9,7 +9,7 @@ namespace :db do
   desc "migrate images to cloud"
   task :migrate_to_cloud do
     User.all.each do |user|
-      upload_resp=Cloudinary::Uploader.upload(user.avatar.file.file)
+      upload_resp=Cloudinary::Uploader.upload(user.old_avatar.file.file)
       user.update(remote_avatar_url: upload_resp['secure_url'])
       puts user.id
     end

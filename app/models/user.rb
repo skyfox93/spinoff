@@ -1,5 +1,6 @@
 class User < ApplicationRecord
 has_secure_password
+#mount_base64_uploader :old_avatar, OldAvatarUploader
 mount_base64_uploader :avatar, AvatarUploader
 
   has_many :photos

@@ -2,16 +2,16 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require_relative 'config/application'
-
-Rails.application.load_tasks
-
 namespace :db do
-  desc "migrate images to cloud"
-  task :migrate_to_cloud do
-    User.all.each do |user|
-      upload_resp=Cloudinary::Uploader.upload(user.old_avatar.file.file)
-      user.update(remote_avatar_url: upload_resp['secure_url'])
-      puts user.id
+desc "migrate avatars to cloud"
+  task migrate_to_cloud: :environment do
+    Photo.all.each do |photo|
+      unless photo.old_file.file.nil?
+        photo.update(remote_file_url: photo.old_file.file.file)
+      end
+      puts photo.id
     end
   end
 end
+
+Rails.application.load_tasks

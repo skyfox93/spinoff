@@ -7,11 +7,11 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    
+
     if Rails.env.development?
       origins '*'
       else
-        origins 'https://spinoff.herokuapp.com'
+        origins ['https://spinoff.herokuapp.com','http://spinoff.herokuapp.com']
     end
     resource '*',
       headers: :any,

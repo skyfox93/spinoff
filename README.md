@@ -1,6 +1,6 @@
 ## Spinoff - Share and Edit Photos
  Spinoff is built with Ruby on Rails and ReactJS
-  The frontend repository can be found at
+  The frontend repository can be found here:
   https://github.com/skyfox93/spinoff-front
  ### Demos
   Live Demo: http://spinoff.herokuapp.com  

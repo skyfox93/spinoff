@@ -20,7 +20,7 @@
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
-
+/public/uploads/tmp/*
 .byebug_history
 .env
 # Ignore master key for decrypting credentials and more.

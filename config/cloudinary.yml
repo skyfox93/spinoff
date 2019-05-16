@@ -2,6 +2,7 @@ development:
   cloud_name: skycloud4eva
   api_key: ENV['CLOUDINARY_KEY']
   api_secret: ENV['CLOUDINARY_SECRET']
+  secure: true
 
 production:
   cloud_name: skycloud4eva

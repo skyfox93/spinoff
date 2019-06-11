@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-    scope ENV['MYAPP_RELATIVE_URL_ROOT'] || '/' do
+    #scope ENV['MYAPP_RELATIVE_URL_ROOT'] || '/' do
       # Routes here
     namespace :api do
       namespace :v1 do
@@ -20,5 +20,5 @@ Rails.application.routes.draw do
         resources :comments, only:[:create,:update,:delete]
       end
     end
-  end
+  #end
 end

@@ -11,8 +11,8 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     if Rails.env.development?
       origins '*'
       else
-        origins ['https://spinoff.herokuapp.com','http://spinoff.herokuapp.com']
-    end
+        origins ['https://spinoff.herokuapp.com','http://spinoff.herokuapp.com', 'localhost:3001','http://174.138.58.32']
+      end
     resource '*',
       headers: :any,
       methods: [:get, :post, :put, :patch, :delete, :options, :head]

@@ -1,21 +1,14 @@
 ## Spinoff - Share and Edit Photos
- Spinoff is built with Ruby on Rails and ReactJS
   The frontend repository can be found here:
   https://github.com/skyfox93/spinoff-front
  ### Demos
-  Live Demo: http://spinoff.herokuapp.com  
+ *Warning: this is an unpolished site built in a two week sprint for coding school, not a proffesional project*
   Video Demo: https://www.youtube.com/watch?v=t1KYujIiABA&t=81s
  ### Features
   + Post Photos  
-  Photos you posted are visible to your friends only
-
   + Edit Photos  
-    Photos you edit are visible to the friends of the original owner of the photo.
-
   + Follow other Users  
-    The person you requested must accept your request
   + View the profile of other users.   
-    You will only see photos you have permission to view
 
 
  ### Custom, Integrated Editor

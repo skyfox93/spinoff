@@ -2,7 +2,7 @@
   The frontend repository can be found here:
   https://github.com/skyfox93/spinoff-front
  ### Demos
- *Warning: this is an unpolished site built in a two week sprint for coding school, not a proffesional project*
+ Please note: this is an unpolished site built in a two week sprint for coding school, not a proffesional project.
   Video Demo: https://www.youtube.com/watch?v=t1KYujIiABA&t=81s
  ### Features
   + Post Photos  

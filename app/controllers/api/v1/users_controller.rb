@@ -1,5 +1,6 @@
 class Api::V1::UsersController < ApplicationController
-  skip_before_action :authorized, only: [:create]
+  skip_before_action :authorized, only: [:create, :index, :show, :profile_photos]
+
   def create
     @user = User.create(user_params)
     if @user.valid?
@@ -15,9 +16,18 @@ class Api::V1::UsersController < ApplicationController
     render json: @user, status: :ok
   end
 
+  def index
+      if current_user
+        @users = User.with_follow_indicator(current_user)
+      else
+        @users = User.all
+      end
+      render json: @users, status: ok
+  end
+
   def search
-    @user=User.find(params[:id])
-    @search_results=User.search(params[:id],params[:name])
+    user=User.find(params[:id])
+    @search_results=User.search(params[:name]).with_follow_indicator(user)
     render json: @search_results, serializer: SearchResultsSerializer
   end
 
@@ -28,15 +38,17 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def feed
-    @user=User.find(params[:user_id])
-    @feed=@user.feed
+    user=User.find(params[:user_id])
+    @feed=user.feed
     render :json => @feed
   end
 
   def profile_photos
     @user=User.find(params[:user_id])
-    @photos=@user.owned_photos
-    render json: {user: @user,photos: @photos}, serializer: ProfileSerializer
+    limit = params[:limit]
+    offset = params[:offset]
+    @photos=@user.photos_owned.order(created_at: :desc).offset(offset).limit(limit)
+    render json: {user: @user ,photos: @photos}, serializer: ProfileSerializer
   end
 
   def following

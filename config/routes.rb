@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get '/search', to: 'users#search'
       post '/login', to: 'auth#create'
       post '/users', to: 'users#create'
+      get '/photos', to: 'photos#index'
       resources :users do
         resources :photos,shallow: true
         get '/requests', to: 'friendships#get_requests'

@@ -10,7 +10,6 @@ sky=User.create(displayname: "Skylar S", password_digest: 'bla', username: "skyf
 
 gabby=User.create(displayname:"Gabster", password_digest: 'secret', username:'gabby559', bio: 'hipster')
 
-
 ji=User.create(displayname:"ji", password_digest: 'sports', username:'j-ster', bio: 'ganster')
 
 fred=User.create(displayname:"freddy", password_digest: 'funsports', username:'fredster', bio: 'boring as heck')

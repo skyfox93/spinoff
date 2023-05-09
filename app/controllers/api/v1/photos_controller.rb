@@ -1,18 +1,18 @@
 class Api::V1::PhotosController < ApplicationController
-#skip_before_action :authorized
-  def index
-    @user=User.find(params[:user_id])
-    @photos = @user.photos
-    render json:@photos
-  end
+  skip_before_action :authorized, only: [:index, :show]
 
   def show
     @photo=Photo.find(params[:id])
     render json: @photo
   end
-
-
-  # ? post new puzzle?
+  
+  def index
+    offest = params[:offset]
+    limit = params[:limit]
+    @photos  = Photo.include_relations.order(created_at: :desc).limit(limit).offset(offest)
+    render json: @photos
+  end
+  
   def create
     @photo = Photo.new(photo_params)
     @photo.file=params[:file]
@@ -32,15 +32,12 @@ class Api::V1::PhotosController < ApplicationController
     end
   end
 
+  
   def delete
-    params.permit(:id)
-    @photo = Photo.find(params[:id])
-
-    if @photo.valid?
-      @photo.delete
+    photo = Photo.find(params[:id])
+    if photo.valid?
+      photo.delete!
       render json: { user: UserSerializer.new(current_user) }, status: :accepted
-    else
-      render json: {error: 'failed to create new photo'}, status: :unprocessable_entity
     end
   end
 

@@ -6,14 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first
 
-sky=User.create(displayname: "Skylar S", password_digest: 'bla', username: "skyfox93", bio:' cool guy')
+sky=User.create(displayname: "Skylar S", password: 'password', username: "skyfox93", bio:' cool guy')
 
-gabby=User.create(displayname:"Gabster", password_digest: 'secret', username:'gabby559', bio: 'hipster')
+gabby=User.create(displayname:"Gabby", password: 'password', username:'gabby559', bio: 'hipster')
 
-ji=User.create(displayname:"ji", password_digest: 'sports', username:'j-ster', bio: 'ganster')
+ji=User.create(displayname:"ji", password_digest: 'password', username:'jister', bio: 'ganster')
 
-fred=User.create(displayname:"freddy", password_digest: 'funsports', username:'fredster', bio: 'boring as heck')
+fred=User.create(displayname:"freddy", password_digest: 'password', username:'fredster', bio: 'boring as heck')
 
 Friendship.create(follower: User.first, followee: User.second, accepted: true)
 Friendship.create(follower: User.third, followee: User.first, accepted: true)
 Friendship.create(follower: User.fourth, followee: User.first, accepted: false)
+
+

@@ -9,7 +9,7 @@ class Api::V1::PhotosController < ApplicationController
   def index
     offest = params[:offset]
     limit = params[:limit]
-    @photos  = Photo.include_relations.order(created_at: :desc).limit(limit).offset(offest)
+    @photos  = Photo.add_spinoff_counts(Photo.include_relations.order(created_at: :desc).limit(limit).offset(offest))
     render json: @photos
   end
   

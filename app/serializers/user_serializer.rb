@@ -4,9 +4,9 @@ end
 
 
 def you_follow
-  self[:you_follow]
+  self["you_follow"]
 end
 
 def follows_you
-  self[:follows_you]
+  self["follows_you"]
 end

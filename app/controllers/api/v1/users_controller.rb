@@ -28,7 +28,7 @@ class Api::V1::UsersController < ApplicationController
   def search
     user=User.find(params[:id])
     @search_results=User.search(params[:name]).with_follow_indicator(user)
-    render json: @search_results, serializer: SearchResultsSerializer
+    render json: @search_results
   end
 
   def update

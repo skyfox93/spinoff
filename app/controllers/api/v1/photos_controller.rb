@@ -25,32 +25,35 @@ class Api::V1::PhotosController < ApplicationController
 
   def update
     set_photo
-    if @photo.update(photo_params)
-      render json: @photo
+    if @photo.user == current_user
+      if @photo.update(photo_params)
+        render json: @photo
+      else
+        render json: @photo.errors, status: :unprocessable_entity
+      end
     else
-      render json: @photo.errors, status: :unprocessable_entity
+      render json: @photo, status: :unauthorized
     end
   end
 
   
   def delete
     photo = Photo.find(params[:id])
-    if photo.valid?
-      photo.delete!
-      render json: { user: UserSerializer.new(current_user) }, status: :accepted
+    if @photo.user == current_user
+      if photo.valid?
+        photo.delete!
+        render json: { user: UserSerializer.new(current_user) }, status: :accepted
+      end
+    else
+      render json:  @photo, status: :unauthorized
     end
   end
 
-
-
-
-
   private
-  # Use callbacks to share common setup or constraints between actions.
+
   def set_photo
     @photo = Photo.find(params[:id])
   end
-
 
   def photo_params
     params.require(:photo).permit(:user_id, :photo_id,:like_count,:file)
